@@ -26,7 +26,7 @@ As marcas pertencem aos seus respectivos titulares. Os arquivos são usados apen
 
 ## Vídeo do hero
 
-O vídeo `public/assets/hero-detailing.mp4` é o clipe “Polishing a Car”, de Pavel Danilyuk, disponibilizado gratuitamente pela Pexels:
+O vídeo `public/assets/hero-detailing.mp4` foi fornecido pelo usuário em 09/08/2026 para uso no hero da NISMO:
 
-- Página do clipe: `https://www.pexels.com/video/polishing-a-car-6159183/`
-- Arquivo usado: `https://videos.pexels.com/video-files/6159183/6159183-hd_1280_720_30fps.mp4`
+- Arquivo original: `6158131-hd_1920_1080_30fps.mp4`
+- Resolução: 1920 × 1080
