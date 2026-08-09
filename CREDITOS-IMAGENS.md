@@ -26,7 +26,7 @@ As marcas pertencem aos seus respectivos titulares. Os arquivos são usados apen
 
 ## Vídeo do hero
 
-O vídeo `public/assets/hero-detailing.mp4` é o clipe “Washing car with a jet”, disponibilizado pela Coverr com direitos comerciais gratuitos:
+O vídeo `public/assets/hero-detailing.mp4` é o clipe “Polishing a Car”, de Pavel Danilyuk, disponibilizado gratuitamente pela Pexels:
 
-- Página do clipe: `https://coverr.co/videos/washing-car-with-a-jet-euj8brr0u1`
-- Arquivo original: `https://cdn.coverr.co/videos/coverr-washing-car-with-a-jet-5415/1080p.mp4`
+- Página do clipe: `https://www.pexels.com/video/polishing-a-car-6159183/`
+- Arquivo usado: `https://videos.pexels.com/video-files/6159183/6159183-hd_1280_720_30fps.mp4`
