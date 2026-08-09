@@ -962,6 +962,162 @@ h2 em {
   transform: translateY(-44px) scale(1.04);
 }
 
+.reviews {
+  background: #080808;
+}
+
+.reviews__heading {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: end;
+  gap: 90px;
+  margin-bottom: 68px;
+}
+
+.reviews h2 {
+  margin: 20px 0 0;
+  font-size: clamp(50px, 6vw, 96px);
+  line-height: 0.91;
+  letter-spacing: -0.067em;
+}
+
+.reviews h2 em {
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.62);
+}
+
+.reviews__score {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 22px;
+  min-height: 112px;
+  padding: 22px 26px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.35s, background 0.35s;
+}
+
+.reviews__score:hover,
+.reviews__score:focus-visible {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.reviews__score > strong {
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.reviews__score div > span {
+  color: #ffb315;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.reviews__score p {
+  margin: 7px 0 0;
+  color: #9b9b9b;
+  font-size: 11px;
+}
+
+.reviews__score small {
+  display: block;
+  margin-top: 8px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.reviews__score .ui-icon {
+  color: var(--red-bright);
+  transition: transform 0.35s var(--ease);
+}
+
+.reviews__score:hover .ui-icon,
+.reviews__score:focus-visible .ui-icon {
+  transform: translateX(5px);
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.review-card {
+  position: relative;
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+  padding: 38px;
+  overflow: hidden;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #0c0c0c;
+  transition: background 0.45s, transform 0.45s var(--ease);
+}
+
+.review-card::before {
+  content: "“";
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  color: rgba(255, 255, 255, 0.035);
+  font-family: Georgia, serif;
+  font-size: 150px;
+  line-height: 1;
+}
+
+.review-card:hover {
+  z-index: 1;
+  background: #121212;
+  transform: translateY(-6px);
+}
+
+.review-card__stars {
+  position: relative;
+  z-index: 1;
+  width: 116px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: #ffb315;
+}
+
+.review-card blockquote {
+  position: relative;
+  z-index: 1;
+  margin: 48px 0 44px;
+  color: #e6e6e6;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(18px, 1.55vw, 23px);
+  line-height: 1.55;
+}
+
+.review-card footer {
+  display: grid;
+  gap: 7px;
+  margin-top: auto;
+  padding: 0;
+  background: transparent;
+}
+
+.review-card footer strong {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.review-card footer span {
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
 .contact {
   overflow: hidden;
   background: var(--red);
@@ -1127,12 +1283,7 @@ h2 em {
   width: 100%;
   height: 500px;
   border: 0;
-  filter: grayscale(1) contrast(1.08);
-  transition: filter 0.5s;
-}
-
-.location:hover iframe {
-  filter: grayscale(0.2) contrast(1.02);
+  filter: grayscale(1) saturate(0) contrast(1.08) brightness(0.88);
 }
 
 .whatsapp-float {
@@ -1369,6 +1520,7 @@ footer {
   .manifesto__grid,
   .section-heading,
   .process__grid,
+  .reviews__heading,
   .contact__grid {
     grid-template-columns: 1fr;
     gap: 38px;
@@ -1383,6 +1535,7 @@ footer {
   .manifesto h2,
   .section-heading h2,
   .process h2,
+  .reviews h2,
   .contact h2 {
     font-size: clamp(44px, 13.5vw, 66px);
   }
@@ -1459,6 +1612,28 @@ footer {
 
   .brand-logo--nasiol:hover img {
     transform: translateY(-37px) scale(1.04);
+  }
+
+  .reviews__heading { margin-bottom: 44px; }
+
+  .reviews__score {
+    min-height: 100px;
+    gap: 16px;
+    padding-inline: 0;
+  }
+
+  .reviews__score > strong { font-size: 42px; }
+
+  .reviews__grid { grid-template-columns: 1fr; }
+
+  .review-card {
+    min-height: 0;
+    padding: 32px;
+  }
+
+  .review-card blockquote {
+    margin: 38px 0 42px;
+    font-size: 19px;
   }
 
   .contact__grid { gap: 64px; }
