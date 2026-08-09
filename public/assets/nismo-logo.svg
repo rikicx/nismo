@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 440 95.89">
+  <!-- Generator: Adobe Illustrator 30.6.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 109)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill-rule: evenodd;
+      }
+
+      .st0, .st1, .st2 {
+        fill: #fff;
+      }
+
+      .st1 {
+        font-family: Arial-BoldMT, Arial;
+        font-size: 13px;
+        font-weight: 700;
+        isolation: isolate;
+        letter-spacing: .12em;
+      }
+
+      .st3 {
+        fill: #d71920;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="st2" d="M0,0h26l36,32V0h23v60h-25L23,28v32H0V0Z"/>
+    <path class="st2" d="M93,0h23v60h-23V0Z"/>
+    <path class="st2" d="M146,0h61v18h-58c-4,0-6,.32-6,1.5,0,1.59,2,1.5,6,1.5h38c17,0,25,12,25,23s-8,16-25,16h-63v-18h60c4,0,5.62.18,5.62-1.27,0-2.03-1.62-1.73-5.62-1.73h-38c-17,0-25-12-25-23S129,0,146,0Z"/>
+    <path class="st2" d="M217,0h31l24,31L296,0h31v60h-23V28l-25,32h-14l-25-32v32h-23V0Z"/>
+    <path class="st0" d="M358,0h56c18,0,26,8,26,25v10c0,17-8,25-26,25h-56c-18,0-26-8-26-25v-10c0-17,8-25,26-25ZM362,18c-5,0-7,3-7,9v6c0,6,2,9,7,9h48c5,0,7-3,7-9v-6c0-6-2-9-7-9h-48Z"/>
+  </g>
+  <path class="st3" d="M0,67h440v4H0v-4Z"/>
+  <text class="st1" transform="translate(133.46 91)"><tspan x="0" y="0">CENTRO AUTOMOTIVO</tspan></text>
+</svg>
