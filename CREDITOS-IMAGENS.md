@@ -2,13 +2,14 @@
 
 ## Materiais fornecidos para a NISMO
 
-As cinco imagens de serviços em `public/assets/` foram fornecidas pelo usuário em 09/08/2026 e são usadas como materiais da própria NISMO:
+As imagens de serviços em `public/assets/` foram fornecidas pelo usuário e são usadas como materiais da própria NISMO:
 
 - `funilaria-pintura.png`
 - `nasiol-nl272.png`
 - `nasiol-zr53.png`
 - `nasiol-xr03.png`
 - `pacote-plus.png`
+- `servico-mecanica.jpg` — fotografia enviada em 12/08/2026 e otimizada para uso no mosaico de serviços
 
 O logo NISMO exibido no site foi redesenhado como vetor SVG a partir da assinatura presente nesses materiais fornecidos. O arquivo final está em `public/assets/nismo-logo.svg`, com fundo transparente.
 

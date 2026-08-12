@@ -167,111 +167,149 @@
           <div class="section-heading reveal">
             <div>
               <span class="section-kicker">02 · SERVIÇOS</span>
-              <h2>Do impacto ao <em>acabamento final.</em></h2>
+              <h2>Quatro frentes.<br /><em>Um único padrão.</em></h2>
             </div>
-            <p>Uma jornada completa de recuperação e cuidado, definida a partir do estado real do veículo.</p>
+            <p>Da manutenção ao acabamento, cada frente reúne serviços específicos conduzidos com o mesmo cuidado técnico. Selecione uma área para conhecer as opções.</p>
           </div>
 
-          <div class="services__grid">
-            <article class="service-card reveal">
-              <span>01</span>
-              <svg class="service-icon" aria-hidden="true" viewBox="0 0 64 64">
-                <path d="M14 42h36l-5-14H19l-5 14Zm6 0v7m24-7v7M22 28l4-9h12l4 9M21 49h7m8 0h7" />
-                <path d="m43 15 6-6m-1 7 5-1m-11-5 1-5" />
-              </svg>
-              <h3>Funilaria<br />e pintura</h3>
-              <p>Reparos de funilaria, martelinho de ouro e pintura automotiva com foco em alinhamento, cor e acabamento.</p>
-            </article>
-
-            <article class="service-card reveal">
-              <span>02</span>
-              <svg class="service-icon" aria-hidden="true" viewBox="0 0 64 64">
-                <path d="M13 40h38l-4-12H17l-4 12Zm5 0v7m28-7v7M20 28l4-8h16l4 8M19 47h6m14 0h6" />
-              </svg>
-              <h3>Tratamento<br />de pintura</h3>
-              <p>Polimento, cristalização e espelhamento para recuperar brilho, profundidade e uniformidade visual.</p>
-            </article>
-
-            <article class="service-card reveal">
-              <span>03</span>
-              <svg class="service-icon" aria-hidden="true" viewBox="0 0 64 64">
-                <path d="M32 8 15 15v13c0 12 7 22 17 28 10-6 17-16 17-28V15L32 8Zm-9 24 6 6 12-13" />
-              </svg>
-              <h3>Proteção<br />cerâmica</h3>
-              <p>Aplicação de revestimentos Nasiol selecionados conforme o uso, a pintura e o nível de proteção desejado.</p>
-            </article>
-
-            <article class="service-card reveal">
-              <span>04</span>
-              <svg class="service-icon" aria-hidden="true" viewBox="0 0 64 64">
-                <path d="M13 38c5-10 11-15 19-15s14 5 19 15M20 38h24v10H20V38Zm7-15v-8h10v8" />
-              </svg>
-              <h3>Higienização<br />interna</h3>
-              <p>Limpeza completa do interior e cuidado de superfícies, incluindo hidratação de couro quando aplicável.</p>
-            </article>
-
-            <article class="service-card reveal">
-              <span>05</span>
-              <svg class="service-icon" aria-hidden="true" viewBox="0 0 64 64">
-                <path d="M20 48h24M16 41h32M20 41l4-20h16l4 20M27 21v-6h10v6M25 32h14" />
-              </svg>
-              <h3>Lavagem<br />Premium</h3>
-              <p>Lavagem completa com atenção às áreas críticas, além de opções para motor e chassi.</p>
-            </article>
-          </div>
-
-          <div class="mosaic-heading reveal" id="protecao">
-            <div>
-              <span class="section-kicker">PACOTES E PROTEÇÕES</span>
-              <h3>Para ir além do reparo.</h3>
-            </div>
-            <p>O Pacote Plus reúne cuidados completos. As proteções Nasiol são indicadas conforme a pintura, o uso e o objetivo de cada cliente.</p>
-          </div>
-
-          <div class="service-mosaic">
-            <figure class="mosaic-card reveal">
-              <div class="mosaic-card__media">
-                <img src="/assets/pacote-plus.png" alt="Veículo com acabamento restaurado no Pacote Plus" />
+          <div class="service-groups" data-service-groups>
+            <article class="service-group service-group--mechanics reveal" data-service-group>
+              <button class="service-group__trigger" type="button" aria-expanded="false" aria-controls="service-mechanics" data-service-trigger>
+                <span class="service-group__media"><img src="/assets/servico-mecanica.jpg" alt="" /></span>
+                <span class="service-group__content">
+                  <span class="service-group__meta">01 · Diagnóstico e manutenção</span>
+                  <strong>Mecânica<br />automotiva</strong>
+                  <small>Do diagnóstico eletrônico à manutenção preventiva e corretiva.</small>
+                </span>
+                <span class="service-group__action" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14" /></svg>
+                </span>
+              </button>
+              <div class="service-group__detail" id="service-mechanics" aria-hidden="true" data-service-detail>
+                <button class="service-detail__close" type="button" aria-label="Fechar Mecânica automotiva" data-service-close>
+                  <svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
+                </button>
+                <div class="service-detail__intro">
+                  <span>01 · Mecânica automotiva</span>
+                  <h3>Diagnóstico antes da troca.</h3>
+                  <p>Leitura técnica para identificar a necessidade real do veículo e definir a manutenção com clareza.</p>
+                </div>
+                <div class="service-detail__services">
+                  <p>Serviços disponíveis</p>
+                  <ul>
+                    <li>Mecânica geral para nacionais e importados</li>
+                    <li>Diagnóstico eletrônico de problemas</li>
+                    <li>Freios e suspensão</li>
+                    <li>Bombas de combustível, água e óleo</li>
+                    <li>Alternador e embreagem</li>
+                    <li>Limpeza de bicos e TBI</li>
+                    <li>Correias e tensionadores</li>
+                    <li>Troca de óleo e filtros em geral</li>
+                    <li>Velas, cabos de velas e bobinas</li>
+                    <li>Baterias, lâmpadas e palhetas</li>
+                  </ul>
+                  <a href="https://wa.me/5511994702249?text=Ol%C3%A1%2C%20gostaria%20de%20uma%20avalia%C3%A7%C3%A3o%20para%20um%20servi%C3%A7o%20de%20mec%C3%A2nica." target="_blank" rel="noreferrer">Solicitar avaliação <svg class="ui-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg></a>
+                </div>
               </div>
-              <figcaption>
-                <span>01 · Cuidado completo</span>
-                <strong>Pacote Plus</strong>
-                <p>Lavagem completa, polimento e cristalização, higienização interna, hidratação do couro e oxy-sanitização.</p>
-              </figcaption>
-            </figure>
+            </article>
 
-            <figure class="mosaic-card reveal">
-              <div class="mosaic-card__media">
-                <img src="/assets/nasiol-nl272.png" alt="Proteção Nasiol NL 272 10H" />
+            <article class="service-group service-group--bodywork reveal" data-service-group>
+              <button class="service-group__trigger" type="button" aria-expanded="false" aria-controls="service-bodywork" data-service-trigger>
+                <span class="service-group__media"><img src="/assets/funilaria-pintura.png" alt="" /></span>
+                <span class="service-group__content">
+                  <span class="service-group__meta">02 · Recuperação e acabamento</span>
+                  <strong>Funilaria<br />e pintura</strong>
+                  <small>Reparos de alto padrão com atenção às linhas, cor e acabamento.</small>
+                </span>
+                <span class="service-group__action" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14" /></svg></span>
+              </button>
+              <div class="service-group__detail" id="service-bodywork" aria-hidden="true" data-service-detail>
+                <button class="service-detail__close" type="button" aria-label="Fechar Funilaria e pintura" data-service-close><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+                <div class="service-detail__intro">
+                  <span>02 · Funilaria e pintura</span>
+                  <h3>Recuperação com controle de acabamento.</h3>
+                  <p>Cada reparo considera alinhamento, preparação, correspondência de cor e consistência visual do conjunto.</p>
+                </div>
+                <div class="service-detail__services">
+                  <p>Serviços disponíveis</p>
+                  <ul>
+                    <li>Funilaria e pintura de alto padrão</li>
+                    <li>Pintura automotiva</li>
+                    <li>Martelinho de ouro</li>
+                    <li>Reforma e pintura de rodas</li>
+                    <li>Kit black em plásticos, grades e molduras</li>
+                  </ul>
+                  <a href="https://wa.me/5511994702249?text=Ol%C3%A1%2C%20gostaria%20de%20uma%20avalia%C3%A7%C3%A3o%20de%20funilaria%20e%20pintura." target="_blank" rel="noreferrer">Solicitar avaliação <svg class="ui-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg></a>
+                </div>
               </div>
-              <figcaption>
-                <span>02 · Nano Layer Technology</span>
-                <strong>NL 272 · 10H</strong>
-                <p>Proteção de alto desempenho indicada após a avaliação técnica da pintura.</p>
-              </figcaption>
-            </figure>
+            </article>
 
-            <figure class="mosaic-card reveal">
-              <div class="mosaic-card__media">
-                <img src="/assets/nasiol-zr53.png" alt="Proteção Nasiol ZR53 9H" />
+            <article class="service-group service-group--detailing reveal" data-service-group>
+              <button class="service-group__trigger" type="button" aria-expanded="false" aria-controls="service-detailing" data-service-trigger>
+                <span class="service-group__media"><img src="/assets/pacote-plus.png" alt="" /></span>
+                <span class="service-group__content">
+                  <span class="service-group__meta">03 · Estética e conservação</span>
+                  <strong>Detailing<br />e estética</strong>
+                  <small>Cuidado interno e externo para recuperar e preservar cada superfície.</small>
+                </span>
+                <span class="service-group__action" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14" /></svg></span>
+              </button>
+              <div class="service-group__detail" id="service-detailing" aria-hidden="true" data-service-detail>
+                <button class="service-detail__close" type="button" aria-label="Fechar Detailing e estética" data-service-close><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+                <div class="service-detail__intro">
+                  <span>03 · Detailing e estética</span>
+                  <h3>Tratamento completo, por dentro e por fora.</h3>
+                  <p>Processos definidos conforme o estado do veículo, a superfície e o resultado esperado.</p>
+                </div>
+                <div class="service-detail__services">
+                  <p>Serviços disponíveis</p>
+                  <ul>
+                    <li>Detalhamento automotivo completo</li>
+                    <li>Lavagens especiais de carroceria, chassi, motor e rodas</li>
+                    <li>Cristalização e espelhamento de pintura</li>
+                    <li>Polimento comercial e polimento técnico</li>
+                    <li>Higienização interna completa</li>
+                    <li>Oxy-sanitização</li>
+                    <li>Hidratação e impermeabilização de couro</li>
+                    <li>Descontaminação de chuva ácida em vidros</li>
+                    <li>Insulfilm profissional térmico e antivandalismo</li>
+                  </ul>
+                  <a href="https://wa.me/5511994702249?text=Ol%C3%A1%2C%20gostaria%20de%20uma%20avalia%C3%A7%C3%A3o%20para%20detailing%20e%20est%C3%A9tica." target="_blank" rel="noreferrer">Solicitar avaliação <svg class="ui-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg></a>
+                </div>
               </div>
-              <figcaption>
-                <span>03 · Nano Ceramic Coating</span>
-                <strong>ZR53 · 9H</strong>
-                <p>Revestimento cerâmico para proteção e acabamento visual intenso.</p>
-              </figcaption>
-            </figure>
+            </article>
 
-            <figure class="mosaic-card reveal">
-              <div class="mosaic-card__media">
-                <img src="/assets/nasiol-xr03.png" alt="Proteção Nasiol XR03 7H" />
+            <article class="service-group service-group--protection reveal" id="protecao" data-service-group>
+              <button class="service-group__trigger" type="button" aria-expanded="false" aria-controls="service-protection" data-service-trigger>
+                <span class="service-group__media"><img src="/assets/nasiol-nl272.png" alt="" /></span>
+                <span class="service-group__content">
+                  <span class="service-group__meta">04 · Tecnologia de proteção</span>
+                  <strong>Proteção<br />automotiva</strong>
+                  <small>Revestimentos e películas indicados após avaliação técnica.</small>
+                </span>
+                <span class="service-group__action" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14" /></svg></span>
+              </button>
+              <div class="service-group__detail" id="service-protection" aria-hidden="true" data-service-detail>
+                <button class="service-detail__close" type="button" aria-label="Fechar Proteção automotiva" data-service-close><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+                <div class="service-detail__intro">
+                  <span>04 · Proteção automotiva</span>
+                  <h3>A proteção certa para cada superfície.</h3>
+                  <p>Produtos e tecnologias selecionados conforme pintura, uso do veículo e nível de proteção desejado.</p>
+                </div>
+                <div class="service-detail__services">
+                  <p>Serviços disponíveis</p>
+                  <ul>
+                    <li>Vitrificação de pintura Nasiol 7H, 9H e 10H</li>
+                    <li>Proteção Nasiol para vidros, couro e metais</li>
+                    <li>Proteção Nasiol para plásticos, tecidos e rodas</li>
+                    <li>Proteção de pintura PPF GSWF Ultra</li>
+                    <li>Proteção de para-brisa PPF ClearPlex</li>
+                    <li>Tratamentos XR03, ZR53 e NL272 conforme avaliação</li>
+                  </ul>
+                  <a href="https://wa.me/5511994702249?text=Ol%C3%A1%2C%20gostaria%20de%20uma%20avalia%C3%A7%C3%A3o%20para%20prote%C3%A7%C3%A3o%20automotiva." target="_blank" rel="noreferrer">Solicitar avaliação <svg class="ui-icon" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg></a>
+                </div>
               </div>
-              <figcaption>
-                <span>04 · Nano Ceramic Coating</span>
-                <strong>XR03 · 7H</strong>
-                <p>Proteção cerâmica para preservar o brilho e facilitar a manutenção.</p>
-              </figcaption>
-            </figure>
+            </article>
           </div>
 
           <div class="brands reveal" aria-label="Marcas de produtos utilizados">

@@ -40,8 +40,115 @@ menuButton?.addEventListener('click', () => {
 
 mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
+const serviceGroups = [...document.querySelectorAll('[data-service-group]')];
+const serviceMedia = window.matchMedia('(max-width: 760px)');
+let activeService = null;
+let activeServiceTrigger = null;
+let serviceCloseTimer = null;
+
+const setMobileService = (group, open) => {
+  const trigger = group.querySelector('[data-service-trigger]');
+  const detail = group.querySelector('[data-service-detail]');
+
+  group.classList.toggle('is-mobile-open', open);
+  trigger?.setAttribute('aria-expanded', String(open));
+  detail?.setAttribute('aria-hidden', String(!open));
+};
+
+const closeDesktopService = ({ restoreFocus = true } = {}) => {
+  if (!activeService) return;
+
+  const group = activeService;
+  const trigger = activeServiceTrigger;
+  const detail = group.querySelector('[data-service-detail]');
+
+  window.clearTimeout(serviceCloseTimer);
+  group.classList.remove('is-expanded');
+  detail?.setAttribute('aria-hidden', 'true');
+  trigger?.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('service-open');
+
+  serviceCloseTimer = window.setTimeout(() => {
+    group.classList.remove('is-active');
+    group.style.removeProperty('--clip-top');
+    group.style.removeProperty('--clip-right');
+    group.style.removeProperty('--clip-bottom');
+    group.style.removeProperty('--clip-left');
+    if (trigger) trigger.tabIndex = 0;
+    if (restoreFocus) trigger?.focus({ preventScroll: true });
+  }, reducedMotion ? 0 : 680);
+
+  activeService = null;
+  activeServiceTrigger = null;
+};
+
+const openDesktopService = (group, trigger) => {
+  if (activeService) closeDesktopService({ restoreFocus: false });
+
+  const rect = group.getBoundingClientRect();
+  const detail = group.querySelector('[data-service-detail]');
+  const closeButton = group.querySelector('[data-service-close]');
+
+  group.style.setProperty('--clip-top', `${Math.max(0, rect.top)}px`);
+  group.style.setProperty('--clip-right', `${Math.max(0, window.innerWidth - rect.right)}px`);
+  group.style.setProperty('--clip-bottom', `${Math.max(0, window.innerHeight - rect.bottom)}px`);
+  group.style.setProperty('--clip-left', `${Math.max(0, rect.left)}px`);
+  group.classList.add('is-active');
+  trigger.setAttribute('aria-expanded', 'true');
+  trigger.tabIndex = -1;
+  detail?.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('service-open');
+  activeService = group;
+  activeServiceTrigger = trigger;
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => group.classList.add('is-expanded'));
+  });
+
+  window.setTimeout(() => closeButton?.focus({ preventScroll: true }), reducedMotion ? 0 : 680);
+};
+
+serviceGroups.forEach((group) => {
+  const trigger = group.querySelector('[data-service-trigger]');
+  const closeButton = group.querySelector('[data-service-close]');
+
+  trigger?.addEventListener('click', () => {
+    if (serviceMedia.matches) {
+      const willOpen = !group.classList.contains('is-mobile-open');
+      serviceGroups.forEach((item) => setMobileService(item, item === group && willOpen));
+      return;
+    }
+
+    openDesktopService(group, trigger);
+  });
+
+  closeButton?.addEventListener('click', () => closeDesktopService());
+});
+
+serviceMedia.addEventListener('change', () => {
+  closeDesktopService({ restoreFocus: false });
+  serviceGroups.forEach((group) => setMobileService(group, false));
+});
+
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closeMenu();
+  if (event.key === 'Escape') {
+    closeMenu();
+    closeDesktopService();
+  }
+
+  if (event.key !== 'Tab' || !activeService) return;
+
+  const focusable = [...activeService.querySelectorAll('button:not([tabindex="-1"]), a[href]')].filter((item) => !item.hasAttribute('disabled'));
+  const first = focusable[0];
+  const last = focusable.at(-1);
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last?.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first?.focus();
+  }
 });
 
 const revealItems = document.querySelectorAll('.reveal');
