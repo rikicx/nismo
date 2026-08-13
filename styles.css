@@ -796,6 +796,14 @@ h2 em {
   transition-delay: 0.18s;
 }
 
+.service-group.is-active.is-closing .service-group__detail {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: none;
+  transform: none;
+  transition: opacity 0.22s ease, transform 0.32s var(--ease), visibility 0s linear 0.7s;
+}
+
 .service-detail__close {
   position: absolute;
   top: 30px;
@@ -1692,38 +1700,41 @@ footer {
     height: 42px;
   }
 
-  .service-group.is-mobile-open .service-group__action {
-    border-color: var(--red);
-    background: var(--red);
-    transform: rotate(45deg);
-  }
-
   .service-group__detail {
-    position: relative;
-    inset: auto;
+    position: absolute;
+    inset: 0;
     display: block;
-    max-height: 0;
-    padding: 0 20px;
+    height: 100%;
+    max-height: none;
+    padding: 112px 20px 54px;
     visibility: hidden;
     opacity: 0;
-    overflow: hidden;
-    background: #0c0c0c;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.72), #080808 44%, #080808 100%);
     pointer-events: none;
-    transform: none;
-    transition: max-height 0.75s var(--ease), padding 0.75s var(--ease), opacity 0.35s ease, visibility 0s linear 0.75s;
+    transform: translateY(20px);
+    -webkit-overflow-scrolling: touch;
+    transition: opacity 0.36s ease 0.16s, transform 0.5s var(--ease) 0.16s, visibility 0s linear 0.7s;
   }
 
-  .service-group.is-mobile-open .service-group__detail {
-    max-height: 1500px;
-    padding: 42px 20px 46px;
+  .service-group.is-active.is-expanded .service-group__detail {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
-    transition-delay: 0s;
+    transform: none;
   }
 
   .service-detail__close {
-    display: none;
+    position: fixed;
+    top: max(18px, env(safe-area-inset-top));
+    right: 18px;
+    z-index: 8;
+    display: grid;
+    width: 48px;
+    height: 48px;
   }
 
   .service-detail__intro h3 {

@@ -41,19 +41,10 @@ menuButton?.addEventListener('click', () => {
 mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
 const serviceGroups = [...document.querySelectorAll('[data-service-group]')];
-const serviceMedia = window.matchMedia('(max-width: 760px)');
 let activeService = null;
 let activeServiceTrigger = null;
 let serviceCloseTimer = null;
-
-const setMobileService = (group, open) => {
-  const trigger = group.querySelector('[data-service-trigger]');
-  const detail = group.querySelector('[data-service-detail]');
-
-  group.classList.toggle('is-mobile-open', open);
-  trigger?.setAttribute('aria-expanded', String(open));
-  detail?.setAttribute('aria-hidden', String(!open));
-};
+let activeServiceScrollY = 0;
 
 const closeDesktopService = ({ restoreFocus = true } = {}) => {
   if (!activeService) return;
@@ -63,20 +54,22 @@ const closeDesktopService = ({ restoreFocus = true } = {}) => {
   const detail = group.querySelector('[data-service-detail]');
 
   window.clearTimeout(serviceCloseTimer);
+  group.classList.add('is-closing');
   group.classList.remove('is-expanded');
-  detail?.setAttribute('aria-hidden', 'true');
   trigger?.setAttribute('aria-expanded', 'false');
-  document.body.classList.remove('service-open');
 
   serviceCloseTimer = window.setTimeout(() => {
-    group.classList.remove('is-active');
+    group.classList.remove('is-active', 'is-closing');
     group.style.removeProperty('--clip-top');
     group.style.removeProperty('--clip-right');
     group.style.removeProperty('--clip-bottom');
     group.style.removeProperty('--clip-left');
+    detail?.setAttribute('aria-hidden', 'true');
     if (trigger) trigger.tabIndex = 0;
+    document.body.classList.remove('service-open');
+    window.scrollTo(0, activeServiceScrollY);
     if (restoreFocus) trigger?.focus({ preventScroll: true });
-  }, reducedMotion ? 0 : 680);
+  }, reducedMotion ? 0 : 700);
 
   activeService = null;
   activeServiceTrigger = null;
@@ -89,6 +82,7 @@ const openDesktopService = (group, trigger) => {
   const detail = group.querySelector('[data-service-detail]');
   const closeButton = group.querySelector('[data-service-close]');
 
+  activeServiceScrollY = window.scrollY;
   group.style.setProperty('--clip-top', `${Math.max(0, rect.top)}px`);
   group.style.setProperty('--clip-right', `${Math.max(0, window.innerWidth - rect.right)}px`);
   group.style.setProperty('--clip-bottom', `${Math.max(0, window.innerHeight - rect.bottom)}px`);
@@ -113,22 +107,13 @@ serviceGroups.forEach((group) => {
   const closeButton = group.querySelector('[data-service-close]');
 
   trigger?.addEventListener('click', () => {
-    if (serviceMedia.matches) {
-      const willOpen = !group.classList.contains('is-mobile-open');
-      serviceGroups.forEach((item) => setMobileService(item, item === group && willOpen));
-      return;
-    }
-
     openDesktopService(group, trigger);
   });
 
   closeButton?.addEventListener('click', () => closeDesktopService());
 });
 
-serviceMedia.addEventListener('change', () => {
-  closeDesktopService({ restoreFocus: false });
-  serviceGroups.forEach((group) => setMobileService(group, false));
-});
+window.addEventListener('resize', () => closeDesktopService({ restoreFocus: false }));
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
