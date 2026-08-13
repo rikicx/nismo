@@ -731,17 +731,20 @@ h2 em {
   stroke-width: 1.5;
 }
 
-.service-group__trigger:hover .service-group__media img,
-.service-group__trigger:focus-visible .service-group__media img {
+.service-group__trigger:hover .service-group__media img {
   transform: scale(1.045);
   filter: saturate(0.9) contrast(1.1) brightness(0.84);
 }
 
-.service-group__trigger:hover .service-group__action,
-.service-group__trigger:focus-visible .service-group__action {
+.service-group__trigger:hover .service-group__action {
   border-color: var(--red);
   background: var(--red);
   transform: rotate(90deg);
+}
+
+.service-group__trigger:focus-visible {
+  outline: 2px solid var(--red-bright);
+  outline-offset: -3px;
 }
 
 .service-group__detail {
@@ -788,6 +791,10 @@ h2 em {
   filter: saturate(0.56) contrast(1.13) brightness(0.58);
 }
 
+.service-group.is-active.is-closing .service-group__media img {
+  filter: saturate(0.6) contrast(1.12) brightness(0.78);
+}
+
 .service-group.is-active.is-expanded .service-group__detail {
   visibility: visible;
   opacity: 1;
@@ -798,10 +805,10 @@ h2 em {
 
 .service-group.is-active.is-closing .service-group__detail {
   visibility: visible;
-  opacity: 1;
+  opacity: 0;
   pointer-events: none;
-  transform: none;
-  transition: opacity 0.22s ease, transform 0.32s var(--ease), visibility 0s linear 0.7s;
+  transform: translateY(12px);
+  transition: opacity 0.2s ease, transform 0.28s var(--ease), visibility 0s linear 0.7s;
 }
 
 .service-detail__close {

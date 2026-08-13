@@ -42,16 +42,19 @@ mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click
 
 const serviceGroups = [...document.querySelectorAll('[data-service-group]')];
 let activeService = null;
+let activeServiceSource = null;
 let activeServiceTrigger = null;
 let serviceCloseTimer = null;
-let activeServiceScrollY = 0;
 
 const closeDesktopService = ({ restoreFocus = true } = {}) => {
   if (!activeService) return;
 
   const group = activeService;
+  const source = activeServiceSource;
   const trigger = activeServiceTrigger;
   const detail = group.querySelector('[data-service-detail]');
+
+  if (group.classList.contains('is-closing')) return;
 
   window.clearTimeout(serviceCloseTimer);
   group.classList.add('is-closing');
@@ -59,58 +62,69 @@ const closeDesktopService = ({ restoreFocus = true } = {}) => {
   trigger?.setAttribute('aria-expanded', 'false');
 
   serviceCloseTimer = window.setTimeout(() => {
-    group.classList.remove('is-active', 'is-closing');
-    group.style.removeProperty('--clip-top');
-    group.style.removeProperty('--clip-right');
-    group.style.removeProperty('--clip-bottom');
-    group.style.removeProperty('--clip-left');
     detail?.setAttribute('aria-hidden', 'true');
     if (trigger) trigger.tabIndex = 0;
     document.body.classList.remove('service-open');
-    window.scrollTo(0, activeServiceScrollY);
-    if (restoreFocus) trigger?.focus({ preventScroll: true });
+
+    window.requestAnimationFrame(() => {
+      group.remove();
+      source?.classList.remove('has-active-overlay');
+      if (restoreFocus) trigger?.focus({ preventScroll: true });
+    });
   }, reducedMotion ? 0 : 700);
 
   activeService = null;
+  activeServiceSource = null;
   activeServiceTrigger = null;
 };
 
-const openDesktopService = (group, trigger) => {
-  if (activeService) closeDesktopService({ restoreFocus: false });
+const openDesktopService = (group, trigger, { moveFocus = false } = {}) => {
+  if (activeService) return;
 
   const rect = group.getBoundingClientRect();
-  const detail = group.querySelector('[data-service-detail]');
-  const closeButton = group.querySelector('[data-service-close]');
+  const overlay = group.cloneNode(true);
+  const overlayTrigger = overlay.querySelector('[data-service-trigger]');
+  const detail = overlay.querySelector('[data-service-detail]');
+  const closeButton = overlay.querySelector('[data-service-close]');
 
-  activeServiceScrollY = window.scrollY;
-  group.style.setProperty('--clip-top', `${Math.max(0, rect.top)}px`);
-  group.style.setProperty('--clip-right', `${Math.max(0, window.innerWidth - rect.right)}px`);
-  group.style.setProperty('--clip-bottom', `${Math.max(0, window.innerHeight - rect.bottom)}px`);
-  group.style.setProperty('--clip-left', `${Math.max(0, rect.left)}px`);
-  group.classList.add('is-active');
+  overlay.classList.remove('reveal', 'is-visible');
+  overlay.classList.add('service-group--overlay');
+  overlay.removeAttribute('id');
+  overlay.querySelectorAll('[id]').forEach((item) => item.removeAttribute('id'));
+  overlayTrigger?.removeAttribute('aria-controls');
+  overlayTrigger?.setAttribute('aria-hidden', 'true');
+  overlayTrigger?.setAttribute('tabindex', '-1');
+  overlay.style.setProperty('--clip-top', `${Math.max(0, rect.top)}px`);
+  overlay.style.setProperty('--clip-right', `${Math.max(0, window.innerWidth - rect.right)}px`);
+  overlay.style.setProperty('--clip-bottom', `${Math.max(0, window.innerHeight - rect.bottom)}px`);
+  overlay.style.setProperty('--clip-left', `${Math.max(0, rect.left)}px`);
+  overlay.classList.add('is-active');
+  group.classList.add('has-active-overlay');
   trigger.setAttribute('aria-expanded', 'true');
   trigger.tabIndex = -1;
   detail?.setAttribute('aria-hidden', 'false');
   document.body.classList.add('service-open');
-  activeService = group;
+  document.body.appendChild(overlay);
+  activeService = overlay;
+  activeServiceSource = group;
   activeServiceTrigger = trigger;
+  closeButton?.addEventListener('click', () => closeDesktopService(), { once: true });
 
   window.requestAnimationFrame(() => {
-    window.requestAnimationFrame(() => group.classList.add('is-expanded'));
+    window.requestAnimationFrame(() => overlay.classList.add('is-expanded'));
   });
 
-  window.setTimeout(() => closeButton?.focus({ preventScroll: true }), reducedMotion ? 0 : 680);
+  if (moveFocus) {
+    window.setTimeout(() => closeButton?.focus({ preventScroll: true }), reducedMotion ? 0 : 680);
+  }
 };
 
 serviceGroups.forEach((group) => {
   const trigger = group.querySelector('[data-service-trigger]');
-  const closeButton = group.querySelector('[data-service-close]');
 
-  trigger?.addEventListener('click', () => {
-    openDesktopService(group, trigger);
+  trigger?.addEventListener('click', (event) => {
+    openDesktopService(group, trigger, { moveFocus: event.detail === 0 });
   });
-
-  closeButton?.addEventListener('click', () => closeDesktopService());
 });
 
 window.addEventListener('resize', () => closeDesktopService({ restoreFocus: false }));
